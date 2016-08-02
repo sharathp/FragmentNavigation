@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingTop="200dp"
+              android:background="#33000000">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fragment 5"/>
+
+    <Button
+        android:id="@+id/btn_frag5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next"/>
+
+</LinearLayout>
