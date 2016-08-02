@@ -1,4 +1,4 @@
-package com.sharathp.fragmentnavigation.fragments;
+package com.sharathp.fragmentnavigation;
 
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;

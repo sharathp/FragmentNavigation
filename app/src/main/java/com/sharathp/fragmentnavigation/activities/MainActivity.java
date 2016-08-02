@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.sharathp.fragmentnavigation.R;
-import com.sharathp.fragmentnavigation.fragments.BackstackNavigator;
+import com.sharathp.fragmentnavigation.BackstackNavigator;
 import com.sharathp.fragmentnavigation.fragments.DummyFragment1;
 import com.sharathp.fragmentnavigation.fragments.DummyFragment2;
 import com.sharathp.fragmentnavigation.fragments.DummyFragment3;
