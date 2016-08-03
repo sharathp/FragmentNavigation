@@ -3,8 +3,8 @@ package com.sharathp.fragmentnavigation.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.sharathp.fragmentnavigation.R;
 import com.sharathp.fragmentnavigation.BackstackNavigator;
+import com.sharathp.fragmentnavigation.R;
 import com.sharathp.fragmentnavigation.fragments.DummyFragment1;
 import com.sharathp.fragmentnavigation.fragments.DummyFragment2;
 import com.sharathp.fragmentnavigation.fragments.DummyFragment3;
@@ -35,12 +35,25 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
 
         mBackstackNavigator = new BackstackNavigator(getSupportFragmentManager());
+
+        if (savedInstanceState != null) {
+            mBackstackNavigator.restoreInstanceState(savedInstanceState);
+        }
+
         mContainerId = R.id.fl_container;
 
         setContentView(R.layout.activity_main);
 
-        // add the first fragment without adding to backstack
-        mBackstackNavigator.noAddToBackStack(mContainerId, DummyFragment1.newInstance());
+        if (savedInstanceState == null) {
+            // add the first fragment without adding to backstack
+            mBackstackNavigator.noAddToBackStack(mContainerId, DummyFragment1.newInstance());
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(final Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mBackstackNavigator.saveInstanceState(outState);
     }
 
     @Override

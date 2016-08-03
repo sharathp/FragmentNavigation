@@ -1,14 +1,18 @@
 package com.sharathp.fragmentnavigation;
 
+import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 public class BackstackNavigator {
+    private static final String KEY_BUNDLE_TAG_MAP = BackstackNavigator.class.getSimpleName() + ":TAG_MAP";
+
     // key is the "current" tag, value is the (previous) tag to be popped (inclusive)
     private final Map<String, String> mTagMap = new HashMap<>();
     private final FragmentManager mFragmentManager;
@@ -35,6 +39,18 @@ public class BackstackNavigator {
         mFragmentManager.popBackStackImmediate(tagToPopInclusive, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         return true;
+    }
+
+    public void saveInstanceState(final Bundle outState) {
+        outState.putSerializable(KEY_BUNDLE_TAG_MAP, (Serializable) mTagMap);
+    }
+
+    public void restoreInstanceState(final Bundle savedInstanceState) {
+        final Map<String, String> tagMap = (Map<String, String>) savedInstanceState.getSerializable(KEY_BUNDLE_TAG_MAP);
+        if (tagMap != null) {
+            mTagMap.clear();
+            mTagMap.putAll(tagMap);
+        }
     }
 
     public int noAddToBackStack(@IdRes final int containerId, final Fragment fragment) {
